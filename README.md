@@ -6,7 +6,7 @@
 
 ## Overview
 
-This project applies deep learning techniques to predict and optimize basketball shot selection in the NBA. Using a dataset of over 4.2 million shots from 2004-2024, we build neural network models that can predict shot success probability based on spatial location, player attributes, defensive context, and game situation.
+This project applies deep learning techniques to predict and optimize basketball shot selection in the NBA. Using a dataset of over 4.2 million shots from 2004-2024, we build neural network models that can predict shot success probability based on spatial location, player attributes, and game context.
 
 Rather than relying on predetermined shot zones or simplistic models, we leverage convolutional neural networks (CNNs) to process spatial shot data, player embeddings to capture individual shooting tendencies, and sequence models to incorporate game context. This approach allows us to discover nuanced patterns in shooting effectiveness that traditional analysis might miss.
 
@@ -43,39 +43,61 @@ We're using several deep learning techniques to model shot success probability:
    * Capture player-specific patterns without manual feature engineering
    * Enable similarity analysis between players
 
-3. **Sequence Modeling (LSTM/GRU)**
+3. **Sequence Modeling (GRU)**
    * Incorporate game context like score, time remaining, and momentum
    * Model how shooting effectiveness changes throughout games
-   * Capture situational factors affecting shot success
+   * Capture temporal patterns affecting shot success
 
-4. **Attention Mechanisms**
-   * Weight the importance of different factors for shot prediction
-   * Provide interpretability for model predictions
-   * Identify key contextual elements for different shot types
+4. **Multi-Branch Neural Networks**
+   * Combine spatial, player, and game context features in a unified model
+   * Learn interactions between different feature types
+   * Provide more accurate predictions than individual models
 
 ## Project Structure
 
-The project is organized into a series of Jupyter notebooks that guide you through our analysis:
+The project is organized into a series of Jupyter notebooks that build upon each other:
 
-1. **[Abstract](notebooks/00_abstract.ipynb)**: Project overview and motivation
-2. **[Data Cleaning & Processing](notebooks/01_data_cleaning_processing.ipynb)**: Cleaning and processing raw data
-3. **[Shot Data Processing](notebooks/02_process_all_shots.ipynb)**: Processing all NBA shot data (2004-2024)
-4. **[Team & Player Data Processing](notebooks/03_process_team_player_data.ipynb)**: Processing team and player statistics
-5. **[Data Exploration](notebooks/04_data_exploration.ipynb)**: Exploring the processed shot data
-6. **[Spatial Model](notebooks/05_spatial_model.ipynb)**: Building and training the spatial CNN model
-7. **[Player Embedding Model](notebooks/06_player_embedding_model.ipynb)**: Building and training the player embedding model
-8. **[Game Context Model](notebooks/07_game_context_model.ipynb)**: Building and training the game context model
-9. **[Integrated Model](notebooks/08_integrated_model.ipynb)**: Combining all models with attention mechanisms
-10. **[Shot Optimization](notebooks/09_shot_optimization.ipynb)**: Analyzing optimal shot selection strategies
-11. **[Strategic Insights](notebooks/10_strategic_insights.ipynb)**: Analyzing strategic patterns and evolution
-12. **[Conclusions](notebooks/11_conclusions.ipynb)**: Summarizing findings and future directions
+1. **[Introduction](new/01_introduction.ipynb)**: Project overview and motivation
+2. **[Data Collection](new/02_data_collection.ipynb)**: Collecting raw data from various sources
+3. **[Data Cleaning & Validation](new/03_data_cleaning_validation.ipynb)**: Cleaning and validating the raw data
+4. **[Data Standardization](new/04_data_standardization.ipynb)**: Standardizing data formats and units
+5. **[Feature Engineering](new/05_feature_engineering.ipynb)**: Creating features for model training
+6. **[Data Exploration](new/06_data_exploration.ipynb)**: Exploring patterns in the processed data
+7. **[Spatial Model](new/07_spatial_model.ipynb)**: Building a CNN model to predict shot success based on court location
+8. **[Player Embedding Model](new/08_player_embedding_model.ipynb)**: Creating player embeddings to capture shooting tendencies
+9. **[Game Context Model](new/09_game_context_model.ipynb)**: Using sequence models to incorporate game context
+10. **[Integrated Model](new/10_integrated_model.ipynb)**: Combining all three models into a unified architecture
+11. **[Shot Optimization](new/11_shot_optimization.ipynb)**: Analyzing optimal shot selection strategies
+12. **[Strategic Insights](new/12_strategic_insights.ipynb)**: Deriving strategic insights from model predictions
+13. **[Conclusions](new/13_conclusions.ipynb)**: Summarizing findings and future directions
+
+### Model Integration Approach
+
+The project follows a modular approach to modeling shot success:
+
+1. **Individual Models (Notebooks 7-9)**:
+   - **Spatial Model**: Uses a CNN to process court coordinates and predict shot success based on location
+   - **Player Embedding Model**: Creates vector representations of players to capture individual shooting tendencies
+   - **Game Context Model**: Uses a GRU network to model how temporal patterns and game context affect shot success
+
+2. **Integrated Model (Notebook 10)**:
+   - Takes a multi-branch approach to combine spatial, player, and context features
+   - Processes each feature type through specialized branches
+   - Concatenates branch outputs and passes them through additional layers
+   - Learns complex interactions between different feature types
+   - Achieves higher accuracy than any individual model
+
+3. **Applications (Notebooks 11-12)**:
+   - Uses the integrated model to optimize shot selection
+   - Derives strategic insights for player development and team strategy
+   - Analyzes trends in shot selection and efficiency
 
 ## Key Findings
 
 1. **Shot Success Prediction**
    - Spatial factors remain strong predictors, but player-specific patterns are crucial
    - Game context significantly impacts shot success probability
-   - Attention mechanisms successfully weight different factors based on importance
+   - The integrated model successfully captures interactions between different feature types
 
 2. **Shot Selection Optimization**
    - Optimal shot locations vary significantly by player
@@ -122,4 +144,4 @@ jupyter lab
 
 ## Keywords
 
-NBA, deep learning, shot prediction, neural networks, CNN, embeddings, LSTM, attention mechanisms, basketball analytics
+NBA, deep learning, shot prediction, neural networks, CNN, embeddings, GRU, basketball analytics

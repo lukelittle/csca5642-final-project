@@ -7,10 +7,15 @@ data/*.json
 data/*.xlsx
 data/*.parquet
 data/*.feather
+data/*.pickle
+data/*.zip
+data/*.gz
+data/*.tar
+data/*.xz
 
 # Model files
 models/
-models/shot_prediction/
+models/*/
 *.joblib
 *.h5
 *.keras
@@ -21,10 +26,26 @@ models/shot_prediction/
 *.onnx
 *.tflite
 *.pb
+*.savedmodel
+*.weights
+
+# Results and outputs
+results/
+outputs/
+figures/
+plots/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.pdf
 
 # Jupyter Notebook
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
+*.nbconvert.ipynb
+jupyter_execute/
 
 # Python
 __pycache__/
@@ -47,6 +68,27 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
+.python-version
 
 # OS specific
 .DS_Store
@@ -56,13 +98,41 @@ var/
 .Trashes
 ehthumbs.db
 Thumbs.db
+desktop.ini
 
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+*.sublime-workspace
+*.sublime-project
+.project
+.pydevproject
+.spyderproject
+.spyproject
+.ropeproject
+.c9/
+*.launch
+*.tmproj
+*.esproj
+*.code-workspace
 
 # Logs
 logs/
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+tmp/
+temp/
+.temp/
+*.tmp
+*.bak
+*.swp
+*~
+
+# Project specific
+.tool-versions
